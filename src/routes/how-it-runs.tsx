@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Globe, Mail, CreditCard, Mic, Video, Pause } from "lucide-react";
+import { Globe, Mail, MessageSquare, Phone, CreditCard, Mic, Video, Pause } from "lucide-react";
 import { BigHeading, BriefNote, MetaRow, StripLabel } from "@/components/prixy/document-parts";
 
 export const Route = createFileRoute("/how-it-runs")({
@@ -72,9 +72,23 @@ function HowItRunsPage() {
           </div>
           <div className="p-4">
             <h3 className="mb-2 text-sm font-semibold">your own environment / future support</h3>
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              future support will include open-source browser environments connectable to your own server, gcp, or azure. the aim is to let you choose where browser work runs without changing the instruction you give prixy.
+            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
+              future support will include open-source browser environments connectable to your own infrastructure. the aim is to let you choose where browser work runs without changing the instruction you give prixy.
             </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <ServiceCard name="own server" status="turnkey setup">
+                a turnkey setup that connects an open-source browser environment running on hardware you own.
+              </ServiceCard>
+              <ServiceCard name="google cloud" status="future support">
+                connect an open-source browser environment running in your own google cloud account.
+              </ServiceCard>
+              <ServiceCard name="aws cloud" status="future support">
+                connect an open-source browser environment running in your own aws account.
+              </ServiceCard>
+              <ServiceCard name="azure" status="future support">
+                connect an open-source browser environment running in your own azure account.
+              </ServiceCard>
+            </div>
           </div>
         </div>
       </section>
