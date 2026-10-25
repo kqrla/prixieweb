@@ -66,7 +66,7 @@ function HowItRunsPage() {
                 the primary cloud browser environment for meeting joins and browser-based attendance.
               </ServiceCard>
               <ServiceCard name="kernel.sh" status="secondary" muted>
-                a secondary cloud browser option, also used for a separate checkout browser during payment handoffs.
+                secondary oss cloud browser used for a separate checkout browser during payment handoff as well as it's features including kernel vault (@ pre-oauth connectors allowing for joining meetings through the users account when joining as guest is not possible without need for prixie to ever see or have direct access to the user accounts)
               </ServiceCard>
             </div>
           </div>
