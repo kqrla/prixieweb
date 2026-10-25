@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Bot, Wrench, Sprout, Phone, Fingerprint } from "lucide-react";
+import { Bot, Wrench, Sprout, Phone, Fingerprint, Database } from "lucide-react";
 import {
   BigHeading,
   BriefNote,
@@ -119,6 +119,13 @@ function SuitePage() {
               "agent ids for the ecosystem. orchid.dev is in development, with more details to come.",
             icon: <Fingerprint size={18} />,
             marker: "in development",
+          },
+          {
+            title: "retelldb",
+            description:
+              "the shared context and memory layer for the suite. retelldb is in beta use.",
+            icon: <Database size={18} />,
+            marker: "in beta use",
           },
         ]}
       />
