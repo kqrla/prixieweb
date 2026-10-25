@@ -77,16 +77,16 @@ function HowItRunsPage() {
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
               <ServiceCard name="own server" status="turnkey setup">
-                a turnkey setup that connects an open-source browser environment running on hardware you own.
+                turnkey setup running on hardware owned by you or dedicated vps
               </ServiceCard>
               <ServiceCard name="google cloud" status="future support">
-                connect an open-source browser environment running in your own google cloud account.
+                connect to any google cloud infrastructure you've already setup
               </ServiceCard>
               <ServiceCard name="aws cloud" status="future support">
-                connect an open-source browser environment running in your own aws account.
+                connect to amazon aws cloud infrastructure you've already setup
               </ServiceCard>
               <ServiceCard name="azure" status="future support">
-                connect an open-source browser environment running in your own azure account.
+                connect to microsoft azure cloud infrastructure you've already setup
               </ServiceCard>
             </div>
           </div>
