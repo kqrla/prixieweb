@@ -86,7 +86,7 @@ function HowItRunsPage() {
                 connect to amazon aws cloud infrastructure you've already setup
               </ServiceCard>
               <ServiceCard name="azure" status="future support">
-                connect to microsoft azure infrastructure you've already setup
+                connect to microsoft azure cloud infrastructure you've already setup
               </ServiceCard>
             </div>
           </div>
