@@ -66,14 +66,14 @@ function HowItRunsPage() {
                 the primary cloud browser environment for meeting joins and browser-based attendance.
               </ServiceCard>
               <ServiceCard name="kernel.sh" status="secondary" muted>
-                secondary oss cloud browser used for a separate checkout browser during payment handoff as well as it's features including kernel vault (@ pre-oauth connectors allowing for joining meetings through the users account when joining as guest is not possible without need for prixie to ever see or have direct access to the user accounts)
+                secondary oss cloud browser used for a separate checkout browser during payment handoff and pre-oauth connectors allowing for joining meetings through the users account when joining as guest is not possible without need for prixie to ever see or have direct access to the user accounts
               </ServiceCard>
             </div>
           </div>
           <div className="p-4">
             <h3 className="mb-2 text-sm font-semibold">your own environment / future support</h3>
             <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
-              future support will include open-source browser environments connectable to your own infrastructure. the aim is to let you choose where browser work runs without changing the instruction you give prixy.
+              future goal is to reduce dependency on subscriptions &amp; will incorporate open-source browser environments connectable to your own infrastructure. the aim is to let you choose where browser work runs without changing the instruction you give prixie whatsoever.
             </p>
             <div className="grid gap-3 sm:grid-cols-2">
               <ServiceCard name="own server" status="turnkey setup">
@@ -86,7 +86,7 @@ function HowItRunsPage() {
                 connect to amazon aws cloud infrastructure you've already setup
               </ServiceCard>
               <ServiceCard name="azure" status="future support">
-                connect to microsoft azure cloud infrastructure you've already setup
+                connect to microsoft azure infrastructure you've already setup
               </ServiceCard>
             </div>
           </div>
