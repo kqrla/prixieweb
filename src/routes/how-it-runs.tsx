@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { Globe, Mail, MessageSquare, Phone, CreditCard, Mic, Video, Pause } from "lucide-react";
+import { Globe, Mail, MessageSquare, Phone, CreditCard, Mic, Video, Pause, Monitor, Database } from "lucide-react";
 import { BigHeading, BriefNote, MetaRow, StripLabel } from "@/components/prixy/document-parts";
 
 export const Route = createFileRoute("/how-it-runs")({
@@ -184,6 +184,31 @@ function HowItRunsPage() {
               an alternative video direction on hold, outside the active provider plan.
             </ServiceCard>
           </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="screenshare" className="border-x border-b border-primary">
+        <div className="flex items-center gap-3 border-b border-primary px-4 py-3 text-primary">
+          <Monitor size={18} aria-hidden="true" />
+          <h2 id="screenshare" className="text-lg font-semibold">screenshare</h2>
+          <span className="ml-auto inline-flex items-center border border-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide">coming soon</span>
+        </div>
+        <div className="p-4">
+          <ServiceCard name="aixplore" status="in development" muted>
+            spawnables for the agent family, predominantly powering prixie's screensharing capabilities for projects outside prixie's browser capabilities.
+          </ServiceCard>
+        </div>
+      </section>
+
+      <section aria-labelledby="context-memory" className="border-x border-b border-primary">
+        <div className="flex items-center gap-3 border-b border-primary px-4 py-3 text-primary">
+          <Database size={18} aria-hidden="true" />
+          <h2 id="context-memory" className="text-lg font-semibold">context &amp; memory layer</h2>
+        </div>
+        <div className="p-4">
+          <ServiceCard name="retelldb" status="in beta use">
+            the context and memory layer keeping prixie's session context and remembered details in one place.
+          </ServiceCard>
         </div>
       </section>
     </article>
