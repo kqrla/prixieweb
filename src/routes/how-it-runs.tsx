@@ -99,7 +99,7 @@ function HowItRunsPage() {
           <div className="border-b border-primary p-4 md:border-r md:border-b-0">
             <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><Mail size={16} aria-hidden="true" />email</h3>
             <ServiceCard name="agentmail" status="mail layer">
-              receives invitations, registration confirmations, and meeting links, and carries contact and notification messages around the session.
+              prixie's dedicated inbox receives invitations, registration confirmations, and meeting links, and carries contact and notification messages around the session.
             </ServiceCard>
           </div>
           <div className="p-4">
