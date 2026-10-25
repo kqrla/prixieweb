@@ -93,32 +93,52 @@ function HowItRunsPage() {
         </div>
       </section>
 
-      <section aria-labelledby="communication-payments" className="border-x border-b border-primary">
-        <h2 id="communication-payments" className="border-b border-primary px-4 py-3 text-lg font-semibold text-primary">communication and checkout</h2>
+      <section aria-labelledby="communication" className="border-x border-b border-primary">
+        <h2 id="communication" className="border-b border-primary px-4 py-3 text-lg font-semibold text-primary">communication</h2>
         <div className="grid md:grid-cols-2">
           <div className="border-b border-primary p-4 md:border-r md:border-b-0">
-            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><Mail size={16} aria-hidden="true" />mail &amp; contact</h3>
+            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><Mail size={16} aria-hidden="true" />email</h3>
             <ServiceCard name="agentmail" status="mail layer">
               receives invitations, registration confirmations, and meeting links, and carries contact and notification messages around the session.
             </ServiceCard>
           </div>
           <div className="p-4">
-            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><CreditCard size={16} aria-hidden="true" />payment</h3>
-            <div className="space-y-3">
-              <ServiceCard name="kernel.sh vault" status="approval-based checkout">
-                keeps card details inside an approved checkout browser rather than exposing them to the agent.
-              </ServiceCard>
-              <ServiceCard name="agentcard.ai" status="single-use card rail">
-                provides capped, single-use cards for checkout handoffs. live payment gateway validation remains outstanding.
-              </ServiceCard>
-              <ServiceCard name="agentcard.sh" status="future candidate" muted>
-                a candidate for future payment support, not a built rail.
-              </ServiceCard>
-            </div>
-            <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-              the current payment design only proceeds when a promo code produces a clearly readable $0 checkout total. paid registration and unreadable totals remain blocked. this preview cannot make payments.
-            </p>
+            <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><MessageSquare size={16} aria-hidden="true" />texting</h3>
+            <ServiceCard name="photon.codes" status="imessage with rcs fallback">
+              sends and receives imessage, falling back to rcs where imessage is not available, so delegated conversations keep moving over text.
+            </ServiceCard>
           </div>
+        </div>
+        <div className="border-t border-primary p-4">
+          <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><Phone size={16} aria-hidden="true" />dedicated phone number</h3>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ServiceCard name="getdial.ai" status="still considering" muted>
+              a candidate provider for dedicated phone numbers, not a built rail.
+            </ServiceCard>
+            <ServiceCard name="agentphone.ai" status="still considering" muted>
+              a candidate provider for dedicated phone numbers, not a built rail.
+            </ServiceCard>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="payments" className="border-x border-b border-primary">
+        <h2 id="payments" className="border-b border-primary px-4 py-3 text-lg font-semibold text-primary">payments</h2>
+        <div className="p-4">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <ServiceCard name="kernel.sh vault" status="approval-based checkout">
+              keeps card details inside an approved checkout browser rather than exposing them to the agent.
+            </ServiceCard>
+            <ServiceCard name="agentcard.ai" status="single-use card rail">
+              provides capped, single-use cards for checkout handoffs. live payment gateway validation remains outstanding.
+            </ServiceCard>
+            <ServiceCard name="agentcard.sh" status="future candidate" muted>
+              a candidate for future payment support, not a built rail.
+            </ServiceCard>
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+            the current payment design only proceeds when a promo code produces a clearly readable $0 checkout total. paid registration and unreadable totals remain blocked. this preview cannot make payments.
+          </p>
         </div>
       </section>
 

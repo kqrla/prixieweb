@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Bot, Wrench } from "lucide-react";
+import { Bot, Wrench, Sprout, Phone, Fingerprint } from "lucide-react";
 import {
   BigHeading,
   BriefNote,
