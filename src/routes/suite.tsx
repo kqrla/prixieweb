@@ -88,7 +88,7 @@ function SuitePage() {
           {
             title: "moira",
             description:
-              "another member of the upcoming family. moira is in development, with more details to come.",
+              "moira is a context engine with personas: one place where your context lives, split into personas you fully control, shared only through explicit consent, fed from the apps and services each persona actually uses.",
             icon: <Bot size={18} />,
             marker: "in development",
           },
@@ -100,9 +100,9 @@ function SuitePage() {
         columns={3}
         items={[
           {
-            title: "aixplorer",
+            title: "aixplore",
             description:
-              "spawnables for the agent family. aixplorer is in development, with more details to come.",
+              "spawnables for the agent family. aixplore is in development which will predominantly power prixie's screensharing capabilities when it comes to projects that are not within prixie's browser capabilities.",
             icon: <Sprout size={18} />,
             marker: "in development",
           },
