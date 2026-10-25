@@ -94,6 +94,34 @@ function SuitePage() {
           },
         ]}
       />
+
+      <StripLabel>ecosystems</StripLabel>
+      <CellGrid
+        columns={3}
+        items={[
+          {
+            title: "aixplorer",
+            description:
+              "spawnables for the agent family. aixplorer is in development, with more details to come.",
+            icon: <Sprout size={18} />,
+            marker: "in development",
+          },
+          {
+            title: "neophony",
+            description:
+              "dedicated phone numbers for agents, built on neocloud-based esim instead of voip. neophony is in development.",
+            icon: <Phone size={18} />,
+            marker: "in development",
+          },
+          {
+            title: "orchid.dev",
+            description:
+              "agent ids for the ecosystem. orchid.dev is in development, with more details to come.",
+            icon: <Fingerprint size={18} />,
+            marker: "in development",
+          },
+        ]}
+      />
     </div>
   );
 }
