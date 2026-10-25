@@ -104,8 +104,8 @@ function HowItRunsPage() {
           </div>
           <div className="p-4">
             <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><MessageSquare size={16} aria-hidden="true" />texting</h3>
-            <ServiceCard name="photon.codes" status="imessage with rcs fallback">
-              sends and receives imessage, falling back to rcs where imessage is not available, so delegated conversations keep moving over text.
+            <ServiceCard name="photon.codes" status="imessage/rcs fallback (free tier)">
+              sends &amp; receives imessages / sms via photon free tier from the shared number pool from limited ten whitelisted phone numbers or imessage emails that can include links for meetings or requests etc.
             </ServiceCard>
           </div>
         </div>
