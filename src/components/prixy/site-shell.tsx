@@ -41,6 +41,7 @@ const footerLinkGroups = [
       { to: "/how-it-runs", label: "how it runs" },
       { to: "/suite", label: "suite" },
       { to: "/roadmap", label: "roadmap" },
+      { to: "/coverage", label: "coverage" },
     ],
   },
 ] as const;
