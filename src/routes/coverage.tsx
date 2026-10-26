@@ -779,7 +779,7 @@ function CoveragePage() {
         <CoverageTable rows={formPlatforms} />
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           single-page standard-dom forms are hers. one-screen-at-a-time engines have the advance
-          step built, never live-filled. every \"presumed\" row becomes \"working (verified)\" the
+          step built, never live-filled. every "presumed" row becomes "working (verified)" the
           first time a real link of that engine is filled, and not before.
         </p>
       </DocBox>
