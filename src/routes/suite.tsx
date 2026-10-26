@@ -109,7 +109,7 @@ function SuitePage() {
           {
             title: "neophony",
             description:
-              "dedicated phone numbers for agents, built on neocloud-based esim instead of voip. neophony is in development.",
+              "dedicated phone numbers for agents, built on neocloud-based esim instead of voip. omnichannel communication stack connected back to the number across platforms.",
             icon: <Phone size={18} />,
             marker: "in development",
           },
