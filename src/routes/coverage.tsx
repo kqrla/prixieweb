@@ -582,7 +582,11 @@ const horizon: CoverageItem[] = [
     status: "planned",
     note: "beyond just the browser capabilities: choose per task between disposable ephemeral firecracker vms, or a dedicated persistent computer (using celesto) that can later be switched, frozen, or deleted entirely.",
   },
-  { name: "vtuber-esque features", status: "planned" },
+  {
+    name: "vtuber-esque features",
+    status: "planned",
+    note: "lets prixie act as your autonomous avatar ai digital twin, and hand off to you the moment you want to speak or react yourself — vtuber ai masks like deep-live-cam and persona-live smoothly handing off between the two.",
+  },
   {
     name: "global language coverage",
     status: "planned",
