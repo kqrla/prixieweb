@@ -2,6 +2,7 @@
 
 ## current work
 
+- [ ] complete the coverage card layout and verify the preview errors are resolved
 - [ ] tighten footer page-link spacing
 - [ ] reorganize execution notes into provider cards and two-column voice and video sections
 - [ ] add moira after milo and jerry in the suite
