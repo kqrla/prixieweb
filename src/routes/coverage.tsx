@@ -602,6 +602,10 @@ const horizon: CoverageItem[] = [
     status: "planned",
     note: "lu.ma style meetings she hosts; you register and join.",
   },
+  {
+    name: "connect w your calendar and allow assigning tasks in case of double booking",
+    status: "planned",
+  },
 ];
 
 function CoveragePage(): ReactNode {
