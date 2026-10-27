@@ -33,7 +33,7 @@ export const Route = createFileRoute("/coverage")({
 type CoverageItem = {
   name: string;
   status: string;
-  note?: string;
+  note?: ReactNode;
 };
 
 /*
@@ -238,15 +238,13 @@ const sections: { id: string; title: string; columns?: 2 | 3; items: CoverageIte
         status: "working",
         note: "the take-home goes to the owner's address using the creds she already has from the inbound side.",
       },
-      { name: "imessage", status: "not built" },
-      { name: "signal", status: "not built" },
+       { name: "imessage", status: "built, never live-run", note: "photon.codes relay is built and whitelist-gated; awaiting a live run." },
       { name: "whatsapp", status: "not built" },
+       { name: "discord", status: "not built" },
+       { name: "signal", status: "not built" },
       { name: "telegram", status: "not built" },
-      { name: "line", status: "not built" },
-      { name: "wechat", status: "not built" },
       { name: "slack dm", status: "not built" },
-      { name: "discord dm", status: "not built" },
-      { name: "sms", status: "not built" },
+       { name: "wechat / line", status: "not built" },
     ],
   },
   {
@@ -272,30 +270,19 @@ const sections: { id: string; title: string; columns?: 2 | 3; items: CoverageIte
     items: [
       { name: "calls (meeting / livekit)", status: "16:9, 1280x720" },
       {
-        name: "youtube — long form",
-        status: "16:9, 1920x1080",
-        note: "4k supported; burned captions live in the bottom tenth.",
+        name: "youtube",
+        status: "supported formats",
+        note: "long form: 16:9, 1920x1080, with 4k support and burned captions. shorts: 9:16, 1080x1920, up to 3 mins with ui safe bands. thumbnails: 16:9, 3840x2160, keeping the duration badge clear.",
       },
       {
-        name: "youtube — shorts",
-        status: "9:16, 1080x1920",
-        note: "up to 3 mins, with top and bottom ui safe bands.",
+        name: "twitch",
+        status: "supported formats",
+        note: "vod / republish: 16:9, 1920x1080. youtube republishing uses a corner-cam composite, not a crop.",
       },
-      {
-        name: "youtube — thumbnail",
-        status: "16:9, 3840x2160",
-        note: "the duration badge covers the bottom-right corner: nothing critical there.",
-      },
-      {
-        name: "twitch — vod / republish",
-        status: "16:9, 1920x1080",
-        note: "the to-youtube republish is a corner-cam composite, not a crop.",
-      },
-      { name: "tiktok — vertical", status: "9:16, 1080x1920", note: "top and bottom ui safe bands." },
-      { name: "instagram / facebook — reels / stories", status: "9:16, 1080x1920", note: "same shape as shorts." },
-      { name: "instagram / facebook — feed", status: "4:5, 1080x1350" },
-      { name: "instagram / facebook — carousel", status: "1:1, 1080x1080" },
-      { name: "pinterest — standard pin", status: "2:3, 1000x1500" },
+      { name: "tiktok", status: "supported formats", note: "vertical videos: 9:16, 1080x1920, with top and bottom ui safe bands." },
+      { name: "instagram", status: "supported formats", note: "reels / stories: 9:16, 1080x1920, with ui safe bands. feed: 4:5, 1080x1350. carousels: 1:1, 1080x1080." },
+      { name: "facebook", status: "supported formats", note: "reels / stories: 9:16, 1080x1920, with ui safe bands. feed: 4:5, 1080x1350. carousels: 1:1, 1080x1080." },
+      { name: "pinterest", status: "supported formats", note: "standard pins: 2:3, 1000x1500." },
     ],
   },
   {
@@ -563,13 +550,17 @@ const horizon: CoverageItem[] = [
   },
   { name: "payments: agent pay paths, 3ds loops, wallet crypto", status: "not built, on purpose" },
   { name: "wallet / identity rails beyond the agentcard test account", status: "planned" },
-  { name: "her own cloud vm", status: "planned" },
-  { name: "her own password manager", status: "planned" },
+  { name: "swap out subscription dependencies", status: "planned" },
+  { name: "her own cloud vm", status: "planned", note: "her own cloud vm would extend beyond just browser capabilities." },
+  {
+    name: "her own password manager",
+    status: "planned",
+    note: <>her own 1password / bitwarden account, or an <a href="https://agent-vault.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">agentvault by infisical</a> connection. currently operates on kernel.sh managed auth.</>,
+  },
   { name: "vtuber-esque features", status: "planned" },
   { name: "multilingual coverage beyond english", status: "planned" },
   { name: "book a meeting with her", status: "planned" },
   { name: "she hosts meetings", status: "planned" },
-  { name: "an oss join engine", status: "planned" },
 ];
 
 function CoveragePage(): ReactNode {
