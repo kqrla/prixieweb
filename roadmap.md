@@ -2,7 +2,7 @@
 
 ## current work
 
-- [ ] group coverage social platforms and update relay and horizon cards
+- [x] group coverage social platforms and update relay and horizon cards
 - [x] complete the coverage card layout and verify the preview errors are resolved
 - [ ] tighten footer page-link spacing
 - [ ] reorganize execution notes into provider cards and two-column voice and video sections
