@@ -132,7 +132,9 @@ const sections: { id: string; title: string; columns?: 2 | 3; items: CoverageIte
       },
       { name: "ringcentral", status: "planned" },
       { name: "bluejeans", status: "planned" },
-      { name: "webex / gather.town / others", status: "planned" },
+      { name: "webex", status: "planned" },
+      { name: "phone & conference calls", status: "planned" },
+      { name: "gather.town & others", status: "planned" },
     ],
   },
   {
