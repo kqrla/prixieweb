@@ -585,7 +585,7 @@ const horizon: CoverageItem[] = [
   {
     name: "vtuber-esque features",
     status: "planned",
-    note: "lets prixie act as your autonomous avatar ai digital twin, and hand off to you the moment you want to speak or react yourself — vtuber ai masks like deep-live-cam and persona-live smoothly handing off between the two.",
+    note: "brings that ability to meetings too, beyond the twitch/livestream features: prixie acts as your autonomous avatar ai digital twin, and hands off to you the moment you want to speak or react yourself — vtuber ai masks like deep-live-cam and persona-live smoothly handing off between the two.",
   },
   {
     name: "global language coverage",
