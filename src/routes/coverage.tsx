@@ -555,12 +555,28 @@ const horizon: CoverageItem[] = [
     status: "planned",
     note: <>her own 1password / bitwarden account, or an <a href="https://agent-vault.dev" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">agentvault by infisical</a> connection. currently operates on kernel.sh managed auth.</>,
   },
-  { name: "swap out subscription dependencies", status: "planned" },
-  { name: "her own cloud vm", status: "planned", note: "her own cloud vm would extend beyond just browser capabilities." },
+  {
+    name: "swap out subscription dependencies",
+    status: "planned",
+    note: "right now she depends on, albeit the free tiers of, browserbase / kernel.sh. swapping them out with the oss join engine would allow self-hosting on personal servers and instances.",
+  },
+  {
+    name: "her own cloud vm",
+    status: "planned",
+    note: "beyond just the browser capabilities: choose per task between disposable ephemeral firecracker vms, or a dedicated persistent computer (using celesto) that can later be switched, frozen, or burned/deleted entirely.",
+  },
   { name: "vtuber-esque features", status: "planned" },
   { name: "multilingual coverage beyond english", status: "planned" },
-  { name: "book a meeting with her", status: "planned" },
-  { name: "she hosts meetings", status: "planned" },
+  {
+    name: "book a meeting with her",
+    status: "planned",
+    note: "a calendly-like booking option: 1-on-1, or a group limited to people whose emails you add while booking.",
+  },
+  {
+    name: "she hosts meetings",
+    status: "planned",
+    note: "lu.ma style meetings she hosts; you register and join.",
+  },
 ];
 
 function CoveragePage(): ReactNode {
