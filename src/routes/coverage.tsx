@@ -489,7 +489,7 @@ const sections: { id: string; title: string; columns?: 2 | 3; items: CoverageIte
       {
         name: "google forms",
         status: "working (verified)",
-        note: "the only one live-proven: the attendance flow runs on it end to end.",
+        note: "the only one live-proven: the attendance flow runs on it end to end. for now this is only working for forms that don't require someone to be logged in via their google account which is next up. afterwards we'll tackle when the form requires the sharing of google account connected to go ahead and submit the form.",
       },
       { name: "tally.so", status: "working in principle", note: "real dom radio inputs and a real submit button inspected. never live-filled." },
       { name: "surveymonkey", status: "working in principle", note: "the per-screen advance loop is built; recaptcha on free plans can stop her cold. never live-filled." },
@@ -558,7 +558,7 @@ const horizon: CoverageItem[] = [
   {
     name: "context across calls",
     status: "planned",
-    note: "shared context carried over calls and prixie's ability to on call make queries to connected context as well.",
+    note: "shared context carried over calls and prixie's ability to on call make queries to connected context as well as recognize the same acquantance interacted with across different platforms",
   },
   {
     name: "payments: the two rails",
@@ -578,14 +578,14 @@ const horizon: CoverageItem[] = [
     note: "right now she depends on, albeit the free tiers of, browserbase / kernel.sh. swapping them out with the oss join engine would allow self-hosting on personal servers and instances.",
   },
   {
-    name: "her own cloud vm",
+    name: "her own cloud machine",
     status: "planned",
     note: "beyond just the browser capabilities: choose per task between disposable ephemeral firecracker vms, or a dedicated persistent computer (using celesto) that can later be switched, frozen, or deleted entirely.",
   },
   {
     name: "vtuber-esque features",
-    status: "planned",
-    note: "brings that ability to meetings too, beyond the twitch/livestream features: prixie acts as your autonomous avatar ai digital twin, and hands off to you the moment you want to speak or react yourself — vtuber ai masks like deep-live-cam and persona-live smoothly handing off between the two.",
+    status: "planned | digital twin infra",
+    note: "brings that ability to meetings too, beyond the twitch/livestream features: prixie acts as your autonomous avatar ai digital twin, and hands off to you the moment you want to speak or react yourself w vtuber ai masks like deep-live-cam & persona-live smoothly handing off between the two.",
   },
   {
     name: "global language coverage",
@@ -603,8 +603,14 @@ const horizon: CoverageItem[] = [
     note: "lu.ma style meetings she hosts; you register and join.",
   },
   {
-    name: "connect w your calendar and allow assigning tasks in case of double booking",
+    name: "double booking calendar connect",
     status: "planned",
+    note: "connect prixie inside your calendar and allow assigning tasks in case of double booking",
+  },
+  {
+    name: "auth awareness",
+    status: "planned",
+    note: "aware of cases where you can only join meetings via a certain type of organization email (university / workspace) etc.  ",
   },
 ];
 
