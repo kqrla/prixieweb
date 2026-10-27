@@ -563,7 +563,7 @@ const horizon: CoverageItem[] = [
   {
     name: "her own cloud vm",
     status: "planned",
-    note: "beyond just the browser capabilities: choose per task between disposable ephemeral firecracker vms, or a dedicated persistent computer (using celesto) that can later be switched, frozen, or burned/deleted entirely.",
+    note: "beyond just the browser capabilities: choose per task between disposable ephemeral firecracker vms, or a dedicated persistent computer (using celesto) that can later be switched, frozen, or deleted entirely.",
   },
   { name: "vtuber-esque features", status: "planned" },
   { name: "multilingual coverage beyond english", status: "planned" },
