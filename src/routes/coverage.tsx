@@ -42,7 +42,7 @@ type CoverageItem = {
   cards; muted cards stay bare on purpose.
 */
 function CoverageCard({ item }: { item: CoverageItem }) {
-  const shipped = item.note != null;
+  const shipped = !/^(planned|not built|designed|presumed|needs a probe)/.test(item.status);
   return (
     <div
       className={`border border-primary p-3 ${
@@ -584,8 +584,7 @@ function CoveragePage(): ReactNode {
         ]}
       />
       <BriefNote>
-        the honest state of the build, per surface. muted cards are the ones not built yet; notes
-        ride only the shipped ones.
+        what prixie can do today, and what is still ahead.
       </BriefNote>
 
       <StripLabel>coverage</StripLabel>
@@ -601,11 +600,11 @@ function CoveragePage(): ReactNode {
           id={section.id}
           title={section.title}
           items={section.items}
-          columns={section.columns}
+          columns={section.columns ?? 3}
         />
       ))}
 
-      <CoverageSection id="horizon" title="on the horizon" items={horizon} filled />
+      <CoverageSection id="horizon" title="on the horizon" items={horizon} />
 
       <div className="flex flex-wrap gap-4 border-x border-b border-primary px-4 py-4">
         <Link
