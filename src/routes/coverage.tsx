@@ -604,7 +604,7 @@ function CoveragePage(): ReactNode {
         />
       ))}
 
-      <CoverageSection id="horizon" title="on the horizon" items={horizon} filled />
+      <CoverageSection id="horizon" title="on the horizon" items={horizon} />
 
       <div className="flex flex-wrap gap-4 border-x border-b border-primary px-4 py-4">
         <Link
