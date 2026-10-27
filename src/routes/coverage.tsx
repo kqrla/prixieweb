@@ -452,7 +452,16 @@ const sections: { id: string; title: string; columns?: 2 | 3; items: CoverageIte
         note: "the q&a flow coordinates when to speak; the livekit audio transport does the speaking.",
       },
       { name: "breakout rooms", status: "designed" },
-      { name: "screenshare awareness", status: "planned" },
+      {
+        name: "screenshare awareness",
+        status: "planned",
+        note: "awareness is when someone else is presenting: she follows what is on the shared screen while staying out of the way.",
+      },
+      {
+        name: "share her screen",
+        status: "planned",
+        note: "sharing is prixie's own screen being shared: she puts her browser work up front for everyone in the room to see.",
+      },
     ],
   },
   {
@@ -541,8 +550,16 @@ const sections: { id: string; title: string; columns?: 2 | 3; items: CoverageIte
 ];
 
 const horizon: CoverageItem[] = [
-  { name: "voice: her own phone number", status: "planned" },
-  { name: "context across calls", status: "planned" },
+  {
+    name: "voice: her own phone number",
+    status: "planned",
+    note: "omnichannel phone number for calling, imessage, whatsapp, signal etc. alike instead of a decoupled communication stack.",
+  },
+  {
+    name: "context across calls",
+    status: "planned",
+    note: "shared context carried over calls and prixie's ability to on call make queries to connected context as well.",
+  },
   {
     name: "payments: the two rails",
     status: "built, not exercised",
@@ -566,7 +583,11 @@ const horizon: CoverageItem[] = [
     note: "beyond just the browser capabilities: choose per task between disposable ephemeral firecracker vms, or a dedicated persistent computer (using celesto) that can later be switched, frozen, or deleted entirely.",
   },
   { name: "vtuber-esque features", status: "planned" },
-  { name: "multilingual coverage beyond english", status: "planned" },
+  {
+    name: "global language coverage",
+    status: "planned",
+    note: "coverage beyond english as well as multilingual usage in the same call with transcript latin-script transliteration.",
+  },
   {
     name: "book a meeting with her",
     status: "planned",
