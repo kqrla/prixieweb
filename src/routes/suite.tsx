@@ -203,7 +203,7 @@ function SuitePage() {
           },
            {
             title: "themailtell & co",
-            description: "fraud reduction tooling",
+            description: "collection of projects that function as standalone components (plugging into consumer apps) that turns email domains, phone numbers, and postal addresses into cited, dated signal vectors about their infrastructure, such as disposable-service lists, mail routing, and numbering rules. it makes no trust or fraud decision, passes no verdicts and says unknown when applicable so the plugging-in app owns that policy & authority.",
             icon: <Building size={18} />,
             marker: "released, in use",
             muted: true,
