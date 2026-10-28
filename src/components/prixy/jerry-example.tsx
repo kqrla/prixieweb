@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 export function JerryExample({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-2xl gap-0 overflow-y-auto border-primary p-0 shadow-none">
+      <DialogContent className="max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-2xl gap-0 overflow-y-auto border-primary p-0 shadow-none">
         <DialogHeader className="border-b border-primary p-4 pr-12 text-left">
           <DialogTitle className="font-display text-4xl font-black tracking-normal text-primary">jerry airidian</DialogTitle>
           <DialogDescription className="text-xs leading-tight italic text-primary">i'll either find a way or make one</DialogDescription>
