@@ -2,6 +2,7 @@
 
 ## current work
 
+- [x] resolve Suite's mixed React optimizer cache and verify Jerry's dialog
 - [x] add active browser tab sharing and moira to execution notes
 - [x] add jerry's understated example popup and verify both pages
 - [x] group coverage social platforms and update relay and horizon cards
