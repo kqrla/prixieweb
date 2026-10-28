@@ -7,6 +7,13 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      // Prebundle dialog dependencies with React before lazy content routes load.
+      // Late discovery can leave an open preview on mixed optimizer generations.
+      include: ["@radix-ui/react-dialog", "@radix-ui/react-slot"],
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
