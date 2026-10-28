@@ -105,6 +105,7 @@ type CellItem = {
   marker?: string;
   icon?: ReactNode;
   onSelect?: () => void;
+  muted?: boolean;
 };
 
 /*
@@ -127,9 +128,9 @@ export function CellGrid({ items, columns = 3 }: { items: CellItem[]; columns?: 
             {item.icon && <span className="text-primary opacity-80">{item.icon}</span>}
             {item.title}
           </div>
-          <p className="text-xs leading-relaxed text-muted-foreground">{item.description}</p>
+          {item.description && <p className="text-xs leading-relaxed text-muted-foreground">{item.description}</p>}
         </>;
-        const cellClass = "border-b border-primary p-4 last:border-b-0 sm:border-r";
+        const cellClass = `border-b border-primary p-4 last:border-b-0 sm:border-r ${item.muted ? "bg-secondary/40 [&>div]:text-muted-foreground [&_svg]:text-muted-foreground" : ""}`;
         return item.onSelect ? (
           <Button key={item.title} variant="ghost" onClick={item.onSelect}
             className={`${cellClass} block h-full w-full whitespace-normal rounded-none text-left font-normal hover:bg-transparent hover:text-foreground [&_svg]:size-auto`}>
