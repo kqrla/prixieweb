@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
 
 /*
   every page in this site is presented as a printed specification document.
@@ -103,6 +104,7 @@ type CellItem = {
   description: string;
   marker?: string;
   icon?: ReactNode;
+  onSelect?: () => void;
 };
 
 /*
@@ -114,8 +116,8 @@ export function CellGrid({ items, columns = 3 }: { items: CellItem[]; columns?: 
 
   return (
     <div className={`grid grid-cols-1 border border-primary ${columnClass}`}>
-      {items.map((item) => (
-        <div key={item.title} className="border-b border-primary p-4 last:border-b-0 sm:border-r">
+      {items.map((item) => {
+        const content = <>
           {item.marker && (
             <div className="mb-1.5 text-[9px] uppercase tracking-[0.2em] text-primary opacity-55">
               {item.marker}
@@ -126,8 +128,15 @@ export function CellGrid({ items, columns = 3 }: { items: CellItem[]; columns?: 
             {item.title}
           </div>
           <p className="text-xs leading-relaxed text-muted-foreground">{item.description}</p>
-        </div>
-      ))}
+        </>;
+        const cellClass = "border-b border-primary p-4 last:border-b-0 sm:border-r";
+        return item.onSelect ? (
+          <Button key={item.title} variant="ghost" onClick={item.onSelect}
+            className={`${cellClass} block h-full w-full whitespace-normal rounded-none text-left font-normal hover:bg-transparent hover:text-foreground [&_svg]:size-auto`}>
+            {content}
+          </Button>
+        ) : <div key={item.title} className={cellClass}>{content}</div>;
+      })}
     </div>
   );
 }

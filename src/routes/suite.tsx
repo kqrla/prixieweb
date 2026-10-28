@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { JerryExample } from "@/components/prixy/jerry-example";
 import { Bot, Wrench, Sprout, Phone, Fingerprint, Database } from "lucide-react";
 import {
   BigHeading,
@@ -31,6 +33,7 @@ export const Route = createFileRoute("/suite")({
 });
 
 function SuitePage() {
+  const [jerryOpen, setJerryOpen] = useState(false);
   return (
     <div>
       <MetaRow
@@ -80,6 +83,7 @@ function SuitePage() {
           },
           {
             title: "jerry",
+             onSelect: () => setJerryOpen(true),
             description:
               "the jerryrigging agent. jerry patches together quick workflows, one-off scripts, and improvised connections between tools when there is no formal integration.",
             icon: <Wrench size={18} />,
@@ -129,6 +133,7 @@ function SuitePage() {
           },
         ]}
       />
+      <JerryExample open={jerryOpen} onOpenChange={setJerryOpen} />
     </div>
   );
 }

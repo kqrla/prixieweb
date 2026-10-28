@@ -191,10 +191,12 @@ function HowItRunsPage() {
         <div className="flex items-center gap-3 border-b border-primary px-4 py-3 text-primary">
           <Monitor size={18} aria-hidden="true" />
           <h2 id="screenshare" className="text-lg font-semibold">screenshare</h2>
-          <span className="ml-auto inline-flex items-center border border-primary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide">coming soon</span>
         </div>
-        <div className="p-4">
-          <ServiceCard name="aixplore" status="in development" muted>
+        <div className="grid gap-3 p-4 sm:grid-cols-2">
+          <ServiceCard name="browser tab sharing" status="active">
+            share another browser tab with the meeting, with or without audio.
+          </ServiceCard>
+          <ServiceCard name="aixplore" status="coming soon / in development" muted>
             spawnables for the agent family, predominantly powering prixie's screensharing capabilities for projects outside prixie's browser capabilities.
           </ServiceCard>
         </div>
@@ -205,9 +207,12 @@ function HowItRunsPage() {
           <Database size={18} aria-hidden="true" />
           <h2 id="context-memory" className="text-lg font-semibold">context &amp; memory layer</h2>
         </div>
-        <div className="p-4">
+        <div className="grid gap-3 p-4 sm:grid-cols-2">
           <ServiceCard name="retelldb" status="in beta use">
             the context and memory layer keeping prixie's session context and remembered details in one place.
+          </ServiceCard>
+          <ServiceCard name="moira" status="in development" muted>
+            a context engine with personas: context you control, shared only through explicit consent and fed from the apps and services each persona uses.
           </ServiceCard>
         </div>
       </section>
