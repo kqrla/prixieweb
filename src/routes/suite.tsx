@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { JerryExample } from "@/components/prixy/jerry-example";
-import { Bot, Wrench, Sprout, Phone, Fingerprint, Database } from "lucide-react";
+import { AixploreExample } from "@/components/prixy/aixplore-example";
+import { Bot, Wrench, Sprout, Phone, Fingerprint, Database, Shield, Building, Eye, Heart } from "lucide-react";
 import {
   BigHeading,
   BriefNote,
@@ -34,6 +35,7 @@ export const Route = createFileRoute("/suite")({
 
 function SuitePage() {
   const [jerryOpen, setJerryOpen] = useState(false);
+  const [aixploreOpen, setAixploreOpen] = useState(false);
   return (
     <div>
       <MetaRow
@@ -83,7 +85,7 @@ function SuitePage() {
           },
           {
             title: "jerry",
-             onSelect: () => setJerryOpen(true),
+            onSelect: () => setJerryOpen(true),
             description:
               "the jerryrigging agent. jerry patches together quick workflows, one-off scripts, and improvised connections between tools when there is no formal integration.",
             icon: <Wrench size={18} />,
@@ -105,6 +107,7 @@ function SuitePage() {
         items={[
           {
             title: "aixplore",
+            onSelect: () => setAixploreOpen(true),
             description:
               "spawnable vms for the agent family. spawnables is in development which will predominantly power prixie's screensharing capabilities when it comes to projects that are not within prixie's browser capabilities.",
             icon: <Sprout size={18} />,
@@ -118,12 +121,59 @@ function SuitePage() {
             marker: "in development",
           },
           {
+            title: "clawtel",
+            description: "",
+            icon: <Phone size={18} />,
+            marker: "in development",
+          },
+        ]}
+      />
+
+      <StripLabel>security</StripLabel>
+      <CellGrid
+        columns={2}
+        items={[
+          {
             title: "orchid.dev",
             description:
               "agent ids for the ecosystem. orchid.dev is in development, with more details to come.",
             icon: <Fingerprint size={18} />,
             marker: "in development",
           },
+          {
+            title: "aasn - autonomous agent social number",
+            description: "",
+            icon: <Shield size={18} />,
+            marker: "in development",
+          },
+        ]}
+      />
+
+      <StripLabel>sovereignity</StripLabel>
+      <CellGrid
+        columns={2}
+        items={[
+          {
+            title: "fingentica",
+            description: "",
+            icon: <Building size={18} />,
+            marker: "in development",
+            muted: true,
+          },
+          {
+            title: "agentity",
+            description: "built around clawbank, giving agents their own entities.",
+            icon: <Building size={18} />,
+            marker: "in development",
+            muted: true,
+          },
+        ]}
+      />
+
+      <StripLabel>data</StripLabel>
+      <CellGrid
+        columns={2}
+        items={[
           {
             title: "retelldb",
             description:
@@ -133,7 +183,33 @@ function SuitePage() {
           },
         ]}
       />
+
+      <StripLabel>socmed + product</StripLabel>
+      <CellGrid
+        columns={3}
+        items={[
+          {
+            title: "proskena",
+            description: "",
+            icon: <Sprout size={18} />,
+            marker: "in development",
+          },
+          {
+            title: "beholder",
+            description: "",
+            icon: <Eye size={18} />,
+            marker: "in development",
+          },
+          {
+            title: "evie",
+            description: "personal consumer-side cultural taste intelligence, not business-side.",
+            icon: <Heart size={18} />,
+            marker: "in development",
+          },
+        ]}
+      />
       <JerryExample open={jerryOpen} onOpenChange={setJerryOpen} />
+      <AixploreExample open={aixploreOpen} onOpenChange={setAixploreOpen} />
     </div>
   );
 }

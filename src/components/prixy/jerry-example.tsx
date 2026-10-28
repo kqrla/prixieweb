@@ -5,16 +5,16 @@ export function JerryExample({ open, onOpenChange }: { open: boolean; onOpenChan
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-2xl gap-0 overflow-y-auto border-primary p-0 shadow-none">
-        <DialogHeader className="border-b border-primary p-5 pr-12 text-left">
+        <DialogHeader className="border-b border-primary p-4 pr-12 text-left">
           <DialogTitle className="font-display text-4xl font-black tracking-normal text-primary">jerry airidian</DialogTitle>
-          <DialogDescription className="italic text-primary">i'll either find a way or make one</DialogDescription>
+          <DialogDescription className="text-xs leading-tight italic text-primary">i'll either find a way or make one</DialogDescription>
         </DialogHeader>
-        <div className="space-y-5 p-5 text-xs leading-relaxed">
+        <div className="space-y-3 p-4 text-xs leading-relaxed">
           <div>
             <div className="mb-2 text-primary">01 / the request</div>
             <p>" i need a free business email with my own domain, but all i see are paid services :/"</p>
           </div>
-          <div className="border-y border-primary py-4">
+          <div className="border-y border-primary py-3">
             <div className="mb-2 flex items-center gap-2 text-primary"><Wrench size={16} aria-hidden="true" />02 / find the missing piece</div>
             <p>jerry separates the problem into receiving mail and sending mail. before choosing a workaround, he asks:</p>
             <p className="mt-3 font-semibold">“where did you purchase your domain?”</p>
