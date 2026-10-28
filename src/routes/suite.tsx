@@ -142,12 +142,6 @@ function SuitePage() {
             marker: "released in beta",
           },
           {
-            title: "beholder",
-            description: "",
-            icon: <Eye size={18} />,
-            marker: "in development",
-          },
-          {
             title: "evie",
             description: "personal consumer-side cultural taste intelligence, not business-side.",
             icon: <Heart size={18} />,
@@ -158,7 +152,7 @@ function SuitePage() {
 
        <StripLabel>brandbarbie | brand + positioning</StripLabel>
       <CellGrid
-        columns={2}
+        columns={3}
         items={[
           {
             title: "beholder",
@@ -178,7 +172,7 @@ function SuitePage() {
 
         <StripLabel>data</StripLabel>
       <CellGrid
-        columns={2}
+        columns={3}
         items={[
           {
             title: "retelldb",
@@ -192,7 +186,7 @@ function SuitePage() {
 
       <StripLabel>security</StripLabel>
       <CellGrid
-        columns={2}
+        columns={3}
         items={[
           {
             title: "orchid.dev",
@@ -220,7 +214,7 @@ function SuitePage() {
 
       <StripLabel>sovereignity</StripLabel>
       <CellGrid
-        columns={2}
+        columns={3}
         items={[
           {
             title: "fingentica",
