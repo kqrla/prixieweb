@@ -2,13 +2,13 @@
 
 ## current work
 
-- [ ] add active browser tab sharing and moira to execution notes
-- [ ] add jerry's understated example popup and verify both pages
+- [x] add active browser tab sharing and moira to execution notes
+- [x] add jerry's understated example popup and verify both pages
 - [x] group coverage social platforms and update relay and horizon cards
 - [x] complete the coverage card layout and verify the preview errors are resolved
 - [ ] tighten footer page-link spacing
-- [ ] reorganize execution notes into provider cards and two-column voice and video sections
-- [ ] add moira after milo and jerry in the suite
+- [x] reorganize execution notes into provider cards and two-column voice and video sections
+- [x] add moira after milo and jerry in the suite
 - [ ] verify the updated pages and footer
 
 ## short term
