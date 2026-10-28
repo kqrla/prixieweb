@@ -2,7 +2,7 @@
 
 ## current work
 
-- [ ] reorganize suite groups, add Aixplore's popup, and fit Jerry's popup without scrolling
+- [x] reorganize suite groups, add Aixplore's popup, and fit Jerry's popup without scrolling
 - [x] resolve Suite's mixed React optimizer cache and verify Jerry's dialog
 - [x] add active browser tab sharing and moira to execution notes
 - [x] add jerry's understated example popup and verify both pages
