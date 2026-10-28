@@ -2,6 +2,8 @@
 
 ## current work
 
+- [ ] add active browser tab sharing and moira to execution notes
+- [ ] add jerry's understated example popup and verify both pages
 - [x] group coverage social platforms and update relay and horizon cards
 - [x] complete the coverage card layout and verify the preview errors are resolved
 - [ ] tighten footer page-link spacing
