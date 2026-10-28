@@ -12,7 +12,7 @@ export function JerryExample({ open, onOpenChange }: { open: boolean; onOpenChan
         <div className="space-y-5 p-5 text-xs leading-relaxed">
           <div>
             <div className="mb-2 text-primary">01 / the request</div>
-            <p>“i want a business email with my own domain, for free — but i can't quite use it anywhere.”</p>
+            <p>" i need a free business email with my own domain, but all i see are paid services :/"</p>
           </div>
           <div className="border-y border-primary py-4">
             <div className="mb-2 flex items-center gap-2 text-primary"><Wrench size={16} aria-hidden="true" />02 / find the missing piece</div>
@@ -45,7 +45,7 @@ export function JerryExample({ open, onOpenChange }: { open: boolean; onOpenChan
             </div>
             <p className="mt-3">jerry maps the forwarding address to your google account, then works through verifying your domain email and configuring “send mail as” for outbound messages.</p>
           </div>
-          <p className="border-t border-primary pt-4 text-muted-foreground">an illustrative workaround, not a connected email setup or a full hosted business mailbox. google smtp depends on account eligibility; authentication and recipient display may differ from a dedicated domain mail service.</p>
+          <p className="border-t border-primary pt-4 text-muted-foreground">an illustrative workaround, not a connected email setup or hosted business mailbox</p>
         </div>
       </DialogContent>
     </Dialog>
