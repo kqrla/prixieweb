@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { JerryExample } from "@/components/prixy/jerry-example";
 import { AixploreExample } from "@/components/prixy/aixplore-example";
+import { DearDonnaExample } from "@/components/prixy/deardonna-example";
 import { Bot, Wrench, Sprout, Phone, Fingerprint, Database, Shield, Building, Eye, Heart } from "lucide-react";
 import {
   BigHeading,
@@ -36,6 +37,7 @@ export const Route = createFileRoute("/suite")({
 function SuitePage() {
   const [jerryOpen, setJerryOpen] = useState(false);
   const [aixploreOpen, setAixploreOpen] = useState(false);
+  const [deardonnaOpen, setDeardonnaOpen] = useState(false);
   return (
     <div>
       <MetaRow
@@ -129,6 +131,65 @@ function SuitePage() {
         ]}
       />
 
+          <StripLabel>creative studio + socials</StripLabel>
+      <CellGrid
+        columns={3}
+        items={[
+          {
+            title: "proskena",
+            description: "digital browser-based photography studio",
+            icon: <Sprout size={18} />,
+            marker: "released in beta",
+          },
+          {
+            title: "beholder",
+            description: "",
+            icon: <Eye size={18} />,
+            marker: "in development",
+          },
+          {
+            title: "evie",
+            description: "personal consumer-side cultural taste intelligence, not business-side.",
+            icon: <Heart size={18} />,
+            marker: "in development",
+          },
+        ]}
+      />
+
+       <StripLabel>brandbarbie | brand + positioning</StripLabel>
+      <CellGrid
+        columns={2}
+        items={[
+          {
+            title: "beholder",
+            description: "product positioning based on your repo",
+            icon: <Eye size={18} />,
+            marker: "in development",
+          },
+          {
+            title: "donna & dom",
+            onSelect: () => setDeardonnaOpen(true),
+            description: "domain broker and domain hack master",
+            icon: <Heart size={18} />,
+            marker: "in development",
+          },
+        ]}
+      />
+
+        <StripLabel>data</StripLabel>
+      <CellGrid
+        columns={2}
+        items={[
+          {
+            title: "retelldb",
+            description:
+              "the shared context and memory layer for the suite. retelldb is in beta use.",
+            icon: <Database size={18} />,
+            marker: "in beta use",
+          },
+        ]}
+      />
+
       <StripLabel>security</StripLabel>
       <CellGrid
         columns={2}
@@ -146,8 +207,16 @@ function SuitePage() {
             icon: <Shield size={18} />,
             marker: "in development",
           },
+           {
+            title: "themailtell & co",
+            description: "fraud reduction tooling",
+            icon: <Building size={18} />,
+            marker: "released, in use",
+            muted: true,
+          },
         ]}
       />
+
 
       <StripLabel>sovereignity</StripLabel>
       <CellGrid
@@ -167,49 +236,29 @@ function SuitePage() {
             marker: "in development",
             muted: true,
           },
+           {
+            title: "stacktimize",
+            description: "built around clawbank, giving agents their own entities.",
+            icon: <Building size={18} />,
+            marker: "in development",
+            muted: true,
+          },
+           {
+            title: "orchart",
+            description: "built around clawbank, giving agents their own entities.",
+            icon: <Building size={18} />,
+            marker: "in development",
+            muted: true,
+          },
         ]}
       />
 
-      <StripLabel>data</StripLabel>
-      <CellGrid
-        columns={2}
-        items={[
-          {
-            title: "retelldb",
-            description:
-              "the shared context and memory layer for the suite. retelldb is in beta use.",
-            icon: <Database size={18} />,
-            marker: "in beta use",
-          },
-        ]}
-      />
 
-      <StripLabel>socmed + product</StripLabel>
-      <CellGrid
-        columns={3}
-        items={[
-          {
-            title: "proskena",
-            description: "",
-            icon: <Sprout size={18} />,
-            marker: "in development",
-          },
-          {
-            title: "beholder",
-            description: "",
-            icon: <Eye size={18} />,
-            marker: "in development",
-          },
-          {
-            title: "evie",
-            description: "personal consumer-side cultural taste intelligence, not business-side.",
-            icon: <Heart size={18} />,
-            marker: "in development",
-          },
-        ]}
-      />
+
+
       <JerryExample open={jerryOpen} onOpenChange={setJerryOpen} />
       <AixploreExample open={aixploreOpen} onOpenChange={setAixploreOpen} />
+      <DearDonnaExample open={deardonnaOpen} onOpenChange={setDeardonnaOpen} />
     </div>
   );
 }
