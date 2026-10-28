@@ -3,7 +3,8 @@ import { useState } from "react";
 import { JerryExample } from "@/components/prixy/jerry-example";
 import { AixploreExample } from "@/components/prixy/aixplore-example";
 import { DearDonnaExample } from "@/components/prixy/deardonna-example";
-import { Bot, Wrench, Sprout, Phone, Fingerprint, Database, Shield, Building, Eye, Heart } from "lucide-react";
+import { AgentityExample } from "@/components/prixy/agentity-example";
+import { Bot, Wrench, Sprout, Phone, Fingerprint, Database, Shield, Building, Landmark, ScanSearch, Eye, Heart } from "lucide-react";
 import {
   BigHeading,
   BriefNote,
@@ -38,6 +39,7 @@ function SuitePage() {
   const [jerryOpen, setJerryOpen] = useState(false);
   const [aixploreOpen, setAixploreOpen] = useState(false);
   const [deardonnaOpen, setDeardonnaOpen] = useState(false);
+  const [agentityOpen, setAgentityOpen] = useState(false);
   return (
     <div>
       <MetaRow
@@ -204,7 +206,7 @@ function SuitePage() {
            {
             title: "themailtell & co",
             description: "collection of projects that function as standalone components (plugging into consumer apps) that turns email domains, phone numbers, and postal addresses into cited, dated signal vectors about their infrastructure, such as disposable-service lists, mail routing, and numbering rules. it makes no trust or fraud decision, passes no verdicts and says unknown when applicable so the plugging-in app owns that policy & authority.",
-            icon: <Building size={18} />,
+            icon: <ScanSearch size={18} />,
             marker: "released, in use",
             muted: true,
           },
@@ -225,8 +227,9 @@ function SuitePage() {
           },
           {
             title: "agentity",
-            description: "built around clawbank, giving agents their own entities.",
-            icon: <Building size={18} />,
+            onSelect: () => setAgentityOpen(true),
+            description: "full-lifecycle operating system giving your autonomous ai agents legal entities (using clawbank), with an absolute privacy-first human biometric identity ubo layer (self.xyz) and traditional strict closed-loop fiat banking rails (w mercury / getholdings etc.) with hard-capped virtual subledgers into legally compliant, adaptive, revenue generating llcs without crypto/credit card risk. we connect with tools like paddle for merchant of record requirements & plug in natively with payout rails to abstract away physical friction or running a real u.s. business while fully running on their own cloud and completing automated relevant onboarding into pre-seed tech startup credit programs accessible via gui and cli.",
+            icon: <Landmark size={18} />,
             marker: "in development",
             muted: true,
           },
@@ -253,6 +256,7 @@ function SuitePage() {
       <JerryExample open={jerryOpen} onOpenChange={setJerryOpen} />
       <AixploreExample open={aixploreOpen} onOpenChange={setAixploreOpen} />
       <DearDonnaExample open={deardonnaOpen} onOpenChange={setDeardonnaOpen} />
+      <AgentityExample open={agentityOpen} onOpenChange={setAgentityOpen} />
     </div>
   );
 }

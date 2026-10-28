@@ -101,6 +101,9 @@ function HowItRunsPage() {
             <ServiceCard name="agentmail" status="mail layer">
               prixie's dedicated inbox receives invitations, registration confirmations, and meeting links, and carries contact and notification messages around the session.
             </ServiceCard>
+            <ServiceCard name="carlyemail" status="considering">
+              relay email w custom domain didn't allow prixie replying in thread, this fixes that. dearagent.sh is sh alternative.
+            </ServiceCard>
           </div>
           <div className="p-4">
             <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-primary"><MessageSquare size={16} aria-hidden="true" />texting</h3>
