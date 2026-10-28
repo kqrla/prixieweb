@@ -106,7 +106,7 @@ function SuitePage() {
           {
             title: "aixplore",
             description:
-              "spawnables for the agent family. aixplore is in development which will predominantly power prixie's screensharing capabilities when it comes to projects that are not within prixie's browser capabilities.",
+              "spawnable vms for the agent family. spawnables is in development which will predominantly power prixie's screensharing capabilities when it comes to projects that are not within prixie's browser capabilities.",
             icon: <Sprout size={18} />,
             marker: "in development",
           },
