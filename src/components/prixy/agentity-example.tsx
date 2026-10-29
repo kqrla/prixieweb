@@ -316,9 +316,9 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
               </TabsContent>
               <TabsContent value="coverage" className="mt-0 space-y-3">
                 <div className="text-primary">02 / planned entity coverage</div>
-                <p className="text-muted-foreground">
+                {/* <p className="text-muted-foreground">
                   ticks show planned in-scope provisions, not a live service.
-                </p>
+                </p> */}
                 <CoverageTable
                   groups={[
                     {
