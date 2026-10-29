@@ -151,7 +151,7 @@ function TooltipTerm({ label, description }: { label: string; description: strin
   );
 }
 
-function CountryName({ country, tooltip }: { country: string; tooltip?: string | undefined }) {
+function CountryName({ country, tooltip }: { country: string; tooltip?: string }) {
   if (!tooltip) return <span>{country}</span>;
   return <TooltipTerm label={country} description={tooltip} />;
 }
@@ -403,7 +403,10 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                               ].map(({ country, tooltip }, index) => (
                                 <span key={country} className="whitespace-nowrap">
                                   {index > 0 && <span aria-hidden="true"> · </span>}
-                                  <CountryName country={country} tooltip={tooltip} />
+                                  <CountryName
+                                    country={country}
+                                    {...(tooltip === undefined ? {} : { tooltip })}
+                                  />
                                 </span>
                               ))}
                             </div>
