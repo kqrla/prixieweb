@@ -165,16 +165,9 @@ type CoverageGroup = {
   label: string;
   entries: { id: string; content: ReactNode; provisions?: Provision[] }[];
   provisions?: Provision[];
-  showPlannedStatus?: boolean;
 };
 
-function ProvisionList({
-  provisions,
-  showPlannedStatus = true,
-}: {
-  provisions: Provision[];
-  showPlannedStatus?: boolean;
-}) {
+function ProvisionList({ provisions }: { provisions: Provision[] }) {
   return (
     <ul className="space-y-1">
       {provisions.map((provision) => (
@@ -186,10 +179,7 @@ function ProvisionList({
           ) : (
             <Timer aria-hidden="true" size={14} className="mt-0.5 shrink-0 text-violet-700" />
           )}
-          <span>
-            {provision.label}
-            {provision.status === "planned" && showPlannedStatus && " (planned)"}
-          </span>
+          <span>{provision.label}</span>
         </li>
       ))}
     </ul>
@@ -236,10 +226,7 @@ function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
                       className={`px-2 py-2 align-top ${groupBorderClass}`}
                     >
                       <div className="mb-1 font-semibold text-primary">{group.label}</div>
-                      <ProvisionList
-                        provisions={group.provisions}
-                        showPlannedStatus={group.showPlannedStatus}
-                      />
+                      <ProvisionList provisions={group.provisions} />
                     </td>
                   )}
                   {!group.provisions && (
@@ -273,7 +260,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
           <Tabs defaultValue="overview" className="flex min-h-0 flex-col-reverse">
             <TabsList
               aria-label="agentity information"
-              className="grid h-auto w-full grid-cols-4 rounded-none border-t border-primary bg-transparent p-0 text-xs"
+              className="grid h-auto w-full grid-cols-5 rounded-none border-t border-primary bg-transparent p-0 text-xs"
             >
               <TabsTrigger
                 value="overview"
@@ -286,6 +273,12 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                 className="h-full rounded-none border-r border-primary px-1 py-3 data-[state=active]:bg-secondary data-[state=active]:text-primary data-[state=active]:shadow-none"
               >
                 coverage
+              </TabsTrigger>
+              <TabsTrigger
+                value="lines-drawn"
+                className="h-full rounded-none border-r border-primary px-1 py-3 data-[state=active]:bg-secondary data-[state=active]:text-primary data-[state=active]:shadow-none"
+              >
+                lines drawn
               </TabsTrigger>
               <TabsTrigger
                 value="lifecycle"
@@ -437,7 +430,6 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         { label: "supporting rails only", status: "planned" },
                         { label: "bank account", status: "planned" },
                       ],
-                      showPlannedStatus: false,
                     },
                     {
                       label: "lock-in",
@@ -466,8 +458,19 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                   ]}
                 />
               </TabsContent>
+              <TabsContent value="lines-drawn" className="mt-0 space-y-3">
+                <div className="text-primary">03 / lines drawn</div>
+                <p>
+                  agentity is the entity and administration layer. banking, payment rails, wallets,
+                  cards, and other third-party services remain with their independent providers.
+                </p>
+                <p>
+                  you choose and control those provider relationships; agentity does not operate a
+                  bank, hold funds, or provide legal or tax advice.
+                </p>
+              </TabsContent>
               <TabsContent value="lifecycle" className="mt-0 space-y-3">
-                <div className="text-primary">03 / formation lifecycle</div>
+                <div className="text-primary">04 / formation lifecycle</div>
                 <p>
                   an illustrative sequence for the planned entity journey; these steps are not live
                   integrations or legal advice.
@@ -537,7 +540,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                 />
               </TabsContent>
               <TabsContent value="connects" className="mt-0 space-y-2 leading-tight">
-                <div className="text-primary">04 / decoupled projects</div>
+                <div className="text-primary">05 / decoupled projects</div>
                 <p>independent projects that tie into the same ecosystem.</p>
                 <DetailTable
                   compact
