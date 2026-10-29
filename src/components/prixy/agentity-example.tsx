@@ -382,7 +382,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                           id: "other-countries",
                           content: (
                             <div className="flex flex-wrap">
-                              {["canada", "singapore", "cayman islands"].map((country, index) => (
+                              {["canada", "singapore", "caymans"].map((country, index) => (
                                 <span key={country} className="whitespace-nowrap">
                                   {index > 0 && <span aria-hidden="true"> · </span>}
                                   <CountryName country={country} />
