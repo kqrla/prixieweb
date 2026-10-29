@@ -1,5 +1,5 @@
-import { useState, type ReactNode } from "react";
-import { Check, Timer } from "lucide-react";
+import { type ReactNode } from "react";
+import { Check, Timer, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -40,13 +40,89 @@ function DetailTable({ rows }: { rows: { label: string; detail: ReactNode }[] })
   );
 }
 
+const externalProviderGroups = [
+  {
+    label: "banking",
+    entries: ["ai-native bank", "payment rails", "wallets", "agent cards"],
+    provider: "lorem ipsum",
+    href: "https://tinker.quest",
+  },
+  {
+    label: "entity formation",
+    entries: ["registered agent", "virtual address"],
+    provider: "lorem ipsum",
+    href: "https://tinker.quest",
+  },
+  {
+    label: "daily",
+    entries: ["connecting manufacturers", "merchant of records"],
+    provider: "paddle",
+    href: "https://www.paddle.com",
+  },
+];
+
+function ExternalProvidersTable() {
+  return (
+    <div className="overflow-x-auto border border-primary">
+      <table className="w-full min-w-[28rem] border-collapse text-left text-xs leading-relaxed">
+        <thead>
+          <tr className="border-b border-primary text-primary">
+            <th className="border-r border-primary px-2 py-1.5 font-semibold">area</th>
+            <th className="border-r border-primary px-2 py-1.5 font-semibold">service</th>
+            <th className="px-2 py-1.5 font-semibold">provider</th>
+          </tr>
+        </thead>
+        <tbody>
+          {externalProviderGroups.map((group, groupIndex) =>
+            group.entries.map((entry, entryIndex) => {
+              const isLastEntry = entryIndex === group.entries.length - 1;
+              const hasGroupBorder = groupIndex < externalProviderGroups.length - 1;
+              const borderClass = isLastEntry && !hasGroupBorder ? "" : "border-b border-primary";
+              return (
+                <tr key={`${group.label}-${entry}`} className={borderClass}>
+                  {entryIndex === 0 && (
+                    <th
+                      scope="rowgroup"
+                      rowSpan={group.entries.length}
+                      className={`w-1/4 min-w-28 border-r border-primary px-2 py-2 align-top font-semibold text-primary ${
+                        hasGroupBorder ? "border-b border-primary" : ""
+                      }`}
+                    >
+                      {group.label}
+                    </th>
+                  )}
+                  <td
+                    className={`w-2/5 border-r border-primary px-2 py-2 align-top ${borderClass}`}
+                  >
+                    {entry}
+                  </td>
+                  <td className={`px-2 py-2 align-top ${borderClass}`}>
+                    <a
+                      href={group.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      {group.provider}
+                    </a>
+                  </td>
+                </tr>
+              );
+            }),
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function TooltipTerm({ label, description }: { label: string; description: string }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <button
           type="button"
-          className="cursor-help text-left underline decoration-dotted underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="cursor-help text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           {label}
         </button>
@@ -56,52 +132,43 @@ function TooltipTerm({ label, description }: { label: string; description: strin
   );
 }
 
-function CountryChip({
-  country,
-  selected,
-  onSelect,
-  tooltip,
-}: {
-  country: string;
-  selected: boolean;
-  onSelect: () => void;
-  tooltip?: string | undefined;
-}) {
-  const chip = (
-    <button
-      type="button"
-      aria-pressed={selected}
-      onClick={onSelect}
-      className={`border px-2 py-0.5 text-[11px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-        selected
-          ? "border-primary bg-secondary text-primary"
-          : "border-primary/50 text-muted-foreground hover:border-primary hover:text-primary"
-      }`}
-    >
-      {country}
-    </button>
-  );
-
-  if (!tooltip) return chip;
-
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>{chip}</TooltipTrigger>
-      <TooltipContent>{tooltip}</TooltipContent>
-    </Tooltip>
-  );
+function CountryName({ country, tooltip }: { country: string; tooltip?: string }) {
+  if (!tooltip) return <span>{country}</span>;
+  return <TooltipTerm label={country} description={tooltip} />;
 }
 
 type Provision = {
   label: string;
-  status: "included" | "planned";
+  status: "included" | "planned" | "excluded";
 };
 
 type CoverageGroup = {
   label: string;
-  entries: { id: string; content: ReactNode }[];
-  provisions: Provision[];
+  entries: { id: string; content: ReactNode; provisions?: Provision[] }[];
+  provisions?: Provision[];
 };
+
+function ProvisionList({ provisions }: { provisions: Provision[] }) {
+  return (
+    <ul className="space-y-1">
+      {provisions.map((provision) => (
+        <li key={provision.label} className="flex items-start gap-1.5">
+          {provision.status === "included" ? (
+            <Check aria-hidden="true" size={14} className="mt-0.5 shrink-0 text-emerald-700" />
+          ) : provision.status === "excluded" ? (
+            <X aria-hidden="true" size={14} className="mt-0.5 shrink-0 text-red-700" />
+          ) : (
+            <Timer aria-hidden="true" size={14} className="mt-0.5 shrink-0 text-violet-700" />
+          )}
+          <span>
+            {provision.label}
+            {provision.status === "planned" && " (planned)"}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
   return (
@@ -137,35 +204,18 @@ function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
                   >
                     {entry.content}
                   </td>
-                  {index === 0 && (
+                  {index === 0 && group.provisions && (
                     <td
                       rowSpan={group.entries.length}
                       className={`px-2 py-2 align-top ${groupBorderClass}`}
                     >
                       <div className="mb-1 font-semibold text-primary">{group.label}</div>
-                      <ul className="space-y-1">
-                        {group.provisions.map((provision) => (
-                          <li key={provision.label} className="flex items-start gap-1.5">
-                            {provision.status === "included" ? (
-                              <Check
-                                aria-hidden="true"
-                                size={14}
-                                className="mt-0.5 shrink-0 text-emerald-700"
-                              />
-                            ) : (
-                              <Timer
-                                aria-hidden="true"
-                                size={14}
-                                className="mt-0.5 shrink-0 text-violet-700"
-                              />
-                            )}
-                            <span>
-                              {provision.label}
-                              {provision.status === "planned" && " (planned)"}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      <ProvisionList provisions={group.provisions} />
+                    </td>
+                  )}
+                  {!group.provisions && (
+                    <td className={`px-2 py-2 align-top ${borderClass}`}>
+                      {entry.provisions && <ProvisionList provisions={entry.provisions} />}
                     </td>
                   )}
                 </tr>
@@ -179,9 +229,6 @@ function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
 }
 
 export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
-  const [selectedCountry, setSelectedCountry] = useState("united states");
-  const selectCountry = (country: string) => () => setSelectedCountry(country);
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-2xl gap-0 overflow-y-auto border-primary p-0 shadow-none">
@@ -285,29 +332,36 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                       ],
                     },
                     {
+                      label: "type of founder",
+                      entries: [
+                        {
+                          id: "us-founder",
+                          content: <span>u.s. founder - citizen / pr</span>,
+                          provisions: [{ label: "s-election", status: "included" }],
+                        },
+                        {
+                          id: "international-founder",
+                          content: <span>international founders</span>,
+                          provisions: [
+                            { label: "s-election", status: "excluded" },
+                            { label: "irs form 1120 pro forma", status: "included" },
+                          ],
+                        },
+                      ],
+                    },
+                    {
                       label: "countries",
                       entries: [
                         {
                           id: "united-states",
-                          content: (
-                            <CountryChip
-                              country="united states"
-                              selected={selectedCountry === "united states"}
-                              onSelect={selectCountry("united states")}
-                            />
-                          ),
+                          content: <CountryName country="united states" />,
                         },
                         {
                           id: "other-countries",
                           content: (
-                            <div className="flex flex-wrap gap-1.5">
+                            <div className="flex flex-wrap gap-x-2">
                               {["canada", "singapore", "cayman islands"].map((country) => (
-                                <CountryChip
-                                  key={country}
-                                  country={country}
-                                  selected={selectedCountry === country}
-                                  onSelect={selectCountry(country)}
-                                />
+                                <CountryName key={country} country={country} />
                               ))}
                             </div>
                           ),
@@ -315,20 +369,14 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         {
                           id: "europe",
                           content: (
-                            <div className="flex flex-wrap gap-1.5">
+                            <div className="flex flex-wrap gap-x-2">
                               {[
                                 { country: "uk", tooltip: "private limited company" },
                                 { country: "ireland", tooltip: "private limited company" },
                                 { country: "estonia" },
                                 { country: "bulgaria" },
                               ].map(({ country, tooltip }) => (
-                                <CountryChip
-                                  key={country}
-                                  country={country}
-                                  selected={selectedCountry === country}
-                                  onSelect={selectCountry(country)}
-                                  tooltip={tooltip}
-                                />
+                                <CountryName key={country} country={country} tooltip={tooltip} />
                               ))}
                             </div>
                           ),
@@ -350,7 +398,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                           id: "fiscal-sponsorship",
                           content: (
                             <TooltipTerm
-                              label="u.s. fiscal sponsorship"
+                              label="u.s. nonprofit fiscal sponsorship"
                               description="through hcb and similar programs."
                             />
                           ),
@@ -387,11 +435,6 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                     },
                   ]}
                 />
-                <p aria-live="polite" className="text-muted-foreground">
-                  {selectedCountry === "united states"
-                    ? "default: u.s. llc."
-                    : `${selectedCountry} is an intended expansion; the u.s. is the planned starting point.`}
-                </p>
               </TabsContent>
               <TabsContent value="lifecycle" className="mt-0 space-y-3">
                 <div className="text-primary">03 / formation lifecycle</div>
@@ -511,6 +554,10 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                     },
                   ]}
                 />
+                <section className="space-y-2">
+                  <h3 className="text-primary">external providers</h3>
+                  <ExternalProvidersTable />
+                </section>
               </TabsContent>
             </div>
           </Tabs>
