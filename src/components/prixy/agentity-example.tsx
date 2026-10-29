@@ -381,9 +381,12 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         {
                           id: "other-countries",
                           content: (
-                            <div className="flex flex-wrap gap-x-2">
-                              {["canada", "singapore", "cayman islands"].map((country) => (
-                                <CountryName key={country} country={country} />
+                            <div className="flex flex-wrap">
+                              {["canada", "singapore", "cayman islands"].map((country, index) => (
+                                <span key={country} className="whitespace-nowrap">
+                                  {index > 0 && <span aria-hidden="true"> · </span>}
+                                  <CountryName country={country} />
+                                </span>
                               ))}
                             </div>
                           ),
@@ -391,14 +394,17 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         {
                           id: "europe",
                           content: (
-                            <div className="flex flex-wrap gap-x-2">
+                            <div className="flex flex-wrap">
                               {[
                                 { country: "uk", tooltip: "private limited company" },
                                 { country: "ireland", tooltip: "private limited company" },
                                 { country: "estonia" },
                                 { country: "bulgaria" },
-                              ].map(({ country, tooltip }) => (
-                                <CountryName key={country} country={country} tooltip={tooltip} />
+                              ].map(({ country, tooltip }, index) => (
+                                <span key={country} className="whitespace-nowrap">
+                                  {index > 0 && <span aria-hidden="true"> · </span>}
+                                  <CountryName country={country} tooltip={tooltip} />
+                                </span>
                               ))}
                             </div>
                           ),
