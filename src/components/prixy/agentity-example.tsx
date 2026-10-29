@@ -192,9 +192,9 @@ function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
       <table className="w-full min-w-[34rem] border-collapse text-left text-xs leading-relaxed">
         <thead>
           <tr className="border-b border-primary text-primary">
-            <th className="border-r border-primary px-2 py-1.5 font-semibold">area</th>
-            <th className="border-r border-primary px-2 py-1.5 font-semibold">coverage</th>
-            <th className="px-2 py-1.5 font-semibold">provisions</th>
+            <th className="border-r border-primary px-1.5 py-1.5 font-semibold">area</th>
+            <th className="border-r border-primary px-1.5 py-1.5 font-semibold">coverage</th>
+            <th className="px-1.5 py-1.5 font-semibold">provisions</th>
           </tr>
         </thead>
         <tbody>
@@ -210,27 +210,27 @@ function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
                     <th
                       scope="rowgroup"
                       rowSpan={group.entries.length}
-                      className={`w-1/5 min-w-24 border-r border-primary px-2 py-2 align-top font-semibold text-primary ${groupBorderClass}`}
+                      className={`w-1/5 min-w-24 border-r border-primary px-1.5 py-1.5 align-top font-semibold text-primary ${groupBorderClass}`}
                     >
                       {group.label}
                     </th>
                   )}
                   <td
-                    className={`w-2/5 border-r border-primary px-2 py-2 align-top ${borderClass}`}
+                    className={`w-2/5 border-r border-primary px-1.5 py-1.5 align-top ${borderClass}`}
                   >
                     {entry.content}
                   </td>
                   {index === 0 && group.provisions && (
                     <td
                       rowSpan={group.entries.length}
-                      className={`px-2 py-2 align-top ${groupBorderClass}`}
+                      className={`px-1.5 py-1.5 align-top ${groupBorderClass}`}
                     >
                       <div className="mb-1 font-semibold text-primary">{group.label}</div>
                       <ProvisionList provisions={group.provisions} />
                     </td>
                   )}
                   {!group.provisions && (
-                    <td className={`px-2 py-2 align-top ${borderClass}`}>
+                    <td className={`px-1.5 py-1.5 align-top ${borderClass}`}>
                       {entry.provisions && <ProvisionList provisions={entry.provisions} />}
                     </td>
                   )}
