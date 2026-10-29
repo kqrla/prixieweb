@@ -151,7 +151,7 @@ function TooltipTerm({ label, description }: { label: string; description: strin
   );
 }
 
-function CountryName({ country, tooltip }: { country: string; tooltip?: string }) {
+function CountryName({ country, tooltip }: { country: string; tooltip?: string | undefined }) {
   if (!tooltip) return <span>{country}</span>;
   return <TooltipTerm label={country} description={tooltip} />;
 }
