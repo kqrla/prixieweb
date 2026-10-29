@@ -15,10 +15,20 @@ type AgentityExampleProps = {
   onOpenChange: (open: boolean) => void;
 };
 
-function DetailTable({ rows }: { rows: { label: string; detail: ReactNode }[] }) {
+function DetailTable({
+  rows,
+  compact = false,
+}: {
+  rows: { label: string; detail: ReactNode }[];
+  compact?: boolean;
+}) {
   return (
     <div className="overflow-x-auto border border-primary">
-      <table className="w-full border-collapse text-left text-xs leading-relaxed">
+      <table
+        className={`w-full border-collapse text-left text-xs ${
+          compact ? "leading-tight" : "leading-relaxed"
+        }`}
+      >
         <tbody>
           {rows.map((row, index) => (
             <tr
@@ -27,11 +37,13 @@ function DetailTable({ rows }: { rows: { label: string; detail: ReactNode }[] })
             >
               <th
                 scope="row"
-                className="w-1/3 min-w-28 border-r border-primary px-2 py-2 align-top font-semibold text-primary"
+                className={`w-1/3 min-w-28 border-r border-primary align-top font-semibold text-primary ${
+                  compact ? "px-1.5 py-1" : "px-2 py-2"
+                }`}
               >
                 {row.label}
               </th>
-              <td className="px-2 py-2 align-top">{row.detail}</td>
+              <td className={`align-top ${compact ? "px-1.5 py-1" : "px-2 py-2"}`}>{row.detail}</td>
             </tr>
           ))}
         </tbody>
@@ -44,19 +56,19 @@ const externalProviderGroups = [
   {
     label: "banking",
     entries: ["ai-native bank", "payment rails", "wallets", "agent cards"],
-    provider: "lorem ipsum",
+    providers: ["lorem ipsum", "lorem ipsum"],
     href: "https://tinker.quest",
   },
   {
     label: "entity formation",
     entries: ["registered agent", "virtual address"],
-    provider: "lorem ipsum",
+    providers: ["lorem ipsum", "lorem ipsum"],
     href: "https://tinker.quest",
   },
   {
     label: "daily",
     entries: ["connecting manufacturers", "merchant of records"],
-    provider: "paddle",
+    providers: ["paddle"],
     href: "https://www.paddle.com",
   },
 ];
@@ -64,12 +76,14 @@ const externalProviderGroups = [
 function ExternalProvidersTable() {
   return (
     <div className="overflow-x-auto border border-primary">
-      <table className="w-full min-w-[28rem] border-collapse text-left text-xs leading-relaxed">
+      <table className="w-full min-w-[26rem] border-collapse text-left text-xs leading-tight">
         <thead>
           <tr className="border-b border-primary text-primary">
-            <th className="border-r border-primary px-2 py-1.5 font-semibold">area</th>
-            <th className="border-r border-primary px-2 py-1.5 font-semibold">service</th>
-            <th className="px-2 py-1.5 font-semibold">provider</th>
+            <th className="w-[16%] min-w-20 border-r border-primary px-1.5 py-1 font-semibold">
+              area
+            </th>
+            <th className="w-[38%] border-r border-primary px-1.5 py-1 font-semibold">service</th>
+            <th className="px-1.5 py-1 font-semibold">provider</th>
           </tr>
         </thead>
         <tbody>
@@ -84,7 +98,7 @@ function ExternalProvidersTable() {
                     <th
                       scope="rowgroup"
                       rowSpan={group.entries.length}
-                      className={`w-1/4 min-w-28 border-r border-primary px-2 py-2 align-top font-semibold text-primary ${
+                      className={`w-[16%] min-w-20 border-r border-primary px-1.5 py-1 align-top font-semibold text-primary ${
                         hasGroupBorder ? "border-b border-primary" : ""
                       }`}
                     >
@@ -92,19 +106,24 @@ function ExternalProvidersTable() {
                     </th>
                   )}
                   <td
-                    className={`w-2/5 border-r border-primary px-2 py-2 align-top ${borderClass}`}
+                    className={`w-[38%] border-r border-primary px-1.5 py-1 align-top ${borderClass}`}
                   >
                     {entry}
                   </td>
-                  <td className={`px-2 py-2 align-top ${borderClass}`}>
-                    <a
-                      href={group.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                    >
-                      {group.provider}
-                    </a>
+                  <td className={`px-1.5 py-1 align-top ${borderClass}`}>
+                    <div className="flex flex-wrap gap-x-2">
+                      {group.providers.map((provider, providerIndex) => (
+                        <a
+                          key={`${provider}-${providerIndex}`}
+                          href={group.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                        >
+                          {provider}
+                        </a>
+                      ))}
+                    </div>
                   </td>
                 </tr>
               );
@@ -146,9 +165,16 @@ type CoverageGroup = {
   label: string;
   entries: { id: string; content: ReactNode; provisions?: Provision[] }[];
   provisions?: Provision[];
+  showPlannedStatus?: boolean;
 };
 
-function ProvisionList({ provisions }: { provisions: Provision[] }) {
+function ProvisionList({
+  provisions,
+  showPlannedStatus = true,
+}: {
+  provisions: Provision[];
+  showPlannedStatus?: boolean;
+}) {
   return (
     <ul className="space-y-1">
       {provisions.map((provision) => (
@@ -162,7 +188,7 @@ function ProvisionList({ provisions }: { provisions: Provision[] }) {
           )}
           <span>
             {provision.label}
-            {provision.status === "planned" && " (planned)"}
+            {provision.status === "planned" && showPlannedStatus && " (planned)"}
           </span>
         </li>
       ))}
@@ -210,7 +236,10 @@ function CoverageTable({ groups }: { groups: CoverageGroup[] }) {
                       className={`px-2 py-2 align-top ${groupBorderClass}`}
                     >
                       <div className="mb-1 font-semibold text-primary">{group.label}</div>
-                      <ProvisionList provisions={group.provisions} />
+                      <ProvisionList
+                        provisions={group.provisions}
+                        showPlannedStatus={group.showPlannedStatus}
+                      />
                     </td>
                   )}
                   {!group.provisions && (
@@ -408,6 +437,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         { label: "supporting rails only", status: "planned" },
                         { label: "bank account", status: "planned" },
                       ],
+                      showPlannedStatus: false,
                     },
                     {
                       label: "lock-in",
@@ -506,10 +536,11 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                   ]}
                 />
               </TabsContent>
-              <TabsContent value="connects" className="mt-0 space-y-3">
+              <TabsContent value="connects" className="mt-0 space-y-2 leading-tight">
                 <div className="text-primary">04 / decoupled projects</div>
                 <p>independent projects that tie into the same ecosystem.</p>
                 <DetailTable
+                  compact
                   rows={[
                     {
                       label: "communication stack",
