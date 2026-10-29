@@ -429,7 +429,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                           id: "fiscal-sponsorship",
                           content: (
                             <TooltipTerm
-                              label="u.s. nonprofit fiscal sponsorship"
+                              label="u.s. fiscal sponsorship"
                               description="through hcb and similar programs."
                             />
                           ),
