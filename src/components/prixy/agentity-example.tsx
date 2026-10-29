@@ -15,20 +15,10 @@ type AgentityExampleProps = {
   onOpenChange: (open: boolean) => void;
 };
 
-function DetailTable({
-  rows,
-  compact = false,
-}: {
-  rows: { label: string; detail: ReactNode }[];
-  compact?: boolean;
-}) {
+function DetailTable({ rows }: { rows: { label: string; detail: ReactNode }[] }) {
   return (
     <div className="overflow-x-auto border border-primary">
-      <table
-        className={`w-full border-collapse text-left text-xs ${
-          compact ? "leading-tight" : "leading-relaxed"
-        }`}
-      >
+      <table className="w-full border-collapse text-left text-xs leading-relaxed">
         <tbody>
           {rows.map((row, index) => (
             <tr
@@ -37,98 +27,13 @@ function DetailTable({
             >
               <th
                 scope="row"
-                className={`w-1/3 min-w-28 border-r border-primary align-top font-semibold text-primary ${
-                  compact ? "px-1.5 py-1" : "px-2 py-2"
-                }`}
+                className="w-1/3 min-w-28 border-r border-primary px-2 py-2 align-top font-semibold text-primary"
               >
                 {row.label}
               </th>
-              <td className={`align-top ${compact ? "px-1.5 py-1" : "px-2 py-2"}`}>{row.detail}</td>
+              <td className="px-2 py-2 align-top">{row.detail}</td>
             </tr>
           ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-const externalProviderGroups = [
-  {
-    label: "banking",
-    entries: ["ai-native bank", "payment rails", "wallets", "agent cards"],
-    providers: ["lorem ipsum", "lorem ipsum"],
-    href: "https://tinker.quest",
-  },
-  {
-    label: "entity formation",
-    entries: ["registered agent", "virtual address"],
-    providers: ["lorem ipsum", "lorem ipsum"],
-    href: "https://tinker.quest",
-  },
-  {
-    label: "daily",
-    entries: ["connecting manufacturers", "merchant of records"],
-    providers: ["paddle"],
-    href: "https://www.paddle.com",
-  },
-];
-
-function ExternalProvidersTable() {
-  return (
-    <div className="overflow-x-auto border border-primary">
-      <table className="w-full min-w-[26rem] border-collapse text-left text-xs leading-tight">
-        <thead>
-          <tr className="border-b border-primary text-primary">
-            <th className="w-[16%] min-w-20 border-r border-primary px-1.5 py-1 font-semibold">
-              area
-            </th>
-            <th className="w-[38%] border-r border-primary px-1.5 py-1 font-semibold">service</th>
-            <th className="px-1.5 py-1 font-semibold">provider</th>
-          </tr>
-        </thead>
-        <tbody>
-          {externalProviderGroups.map((group, groupIndex) =>
-            group.entries.map((entry, entryIndex) => {
-              const isLastEntry = entryIndex === group.entries.length - 1;
-              const hasGroupBorder = groupIndex < externalProviderGroups.length - 1;
-              const borderClass = isLastEntry && !hasGroupBorder ? "" : "border-b border-primary";
-              return (
-                <tr key={`${group.label}-${entry}`} className={borderClass}>
-                  {entryIndex === 0 && (
-                    <th
-                      scope="rowgroup"
-                      rowSpan={group.entries.length}
-                      className={`w-[16%] min-w-20 border-r border-primary px-1.5 py-1 align-top font-semibold text-primary ${
-                        hasGroupBorder ? "border-b border-primary" : ""
-                      }`}
-                    >
-                      {group.label}
-                    </th>
-                  )}
-                  <td
-                    className={`w-[38%] border-r border-primary px-1.5 py-1 align-top ${borderClass}`}
-                  >
-                    {entry}
-                  </td>
-                  <td className={`px-1.5 py-1 align-top ${borderClass}`}>
-                    <div className="flex flex-wrap gap-x-2">
-                      {group.providers.map((provider, providerIndex) => (
-                        <a
-                          key={`${provider}-${providerIndex}`}
-                          href={group.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                        >
-                          {provider}
-                        </a>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
-              );
-            }),
-          )}
         </tbody>
       </table>
     </div>
@@ -179,7 +84,10 @@ function ProvisionList({ provisions }: { provisions: Provision[] }) {
           ) : (
             <Timer aria-hidden="true" size={14} className="mt-0.5 shrink-0 text-violet-700" />
           )}
-          <span>{provision.label}</span>
+          <span>
+            {provision.label}
+            {provision.status === "planned" && " (planned)"}
+          </span>
         </li>
       ))}
     </ul>
@@ -260,7 +168,7 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
           <Tabs defaultValue="overview" className="flex min-h-0 flex-col-reverse">
             <TabsList
               aria-label="agentity information"
-              className="grid h-auto w-full grid-cols-5 rounded-none border-t border-primary bg-transparent p-0 text-xs"
+              className="grid h-auto w-full grid-cols-4 rounded-none border-t border-primary bg-transparent p-0 text-xs"
             >
               <TabsTrigger
                 value="overview"
@@ -273,12 +181,6 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                 className="h-full rounded-none border-r border-primary px-1 py-3 data-[state=active]:bg-secondary data-[state=active]:text-primary data-[state=active]:shadow-none"
               >
                 coverage
-              </TabsTrigger>
-              <TabsTrigger
-                value="lines-drawn"
-                className="h-full rounded-none border-r border-primary px-1 py-3 data-[state=active]:bg-secondary data-[state=active]:text-primary data-[state=active]:shadow-none"
-              >
-                lines drawn
               </TabsTrigger>
               <TabsTrigger
                 value="lifecycle"
@@ -359,14 +261,14 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         {
                           id: "us-founder",
                           content: <span>u.s. founder - citizen / pr</span>,
-                          provisions: [{ label: "s-election", status: "included" }],
+                          provisions: [{ label: "S-election", status: "included" }],
                         },
                         {
                           id: "international-founder",
                           content: <span>international founders</span>,
                           provisions: [
-                            { label: "s-election", status: "excluded" },
-                            { label: "irs form 1120 pro forma", status: "included" },
+                            { label: "S-election", status: "excluded" },
+                            { label: "IRS Form 1120 pro forma", status: "included" },
                           ],
                         },
                       ],
@@ -381,12 +283,9 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         {
                           id: "other-countries",
                           content: (
-                            <div className="flex flex-wrap">
-                              {["canada", "singapore", "cayman islands"].map((country, index) => (
-                                <span key={country} className="whitespace-nowrap">
-                                  {index > 0 && <span aria-hidden="true"> · </span>}
-                                  <CountryName country={country} />
-                                </span>
+                            <div className="flex flex-wrap gap-x-2">
+                              {["canada", "singapore", "cayman islands"].map((country) => (
+                                <CountryName key={country} country={country} />
                               ))}
                             </div>
                           ),
@@ -394,20 +293,18 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                         {
                           id: "europe",
                           content: (
-                            <div className="flex flex-wrap">
+                            <div className="flex flex-wrap gap-x-2">
                               {[
                                 { country: "uk", tooltip: "private limited company" },
                                 { country: "ireland", tooltip: "private limited company" },
                                 { country: "estonia" },
                                 { country: "bulgaria" },
-                              ].map(({ country, tooltip }, index) => (
-                                <span key={country} className="whitespace-nowrap">
-                                  {index > 0 && <span aria-hidden="true"> · </span>}
-                                  <CountryName
-                                    country={country}
-                                    {...(tooltip === undefined ? {} : { tooltip })}
-                                  />
-                                </span>
+                              ].map(({ country, tooltip }) => (
+                                <CountryName
+                                  key={country}
+                                  country={country}
+                                  tooltip={tooltip}
+                                />
                               ))}
                             </div>
                           ),
@@ -429,14 +326,14 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                           id: "fiscal-sponsorship",
                           content: (
                             <TooltipTerm
-                              label="u.s. nonprofit fiscal sponsorship"
+                              label="u.s. fiscal sponsorship"
                               description="through hcb and similar programs."
                             />
                           ),
                         },
                       ],
                       provisions: [
-                        { label: "supporting rails only", status: "planned" },
+                        { label: "support w goodstack", status: "planned" },
                         { label: "bank account", status: "planned" },
                       ],
                     },
@@ -462,24 +359,13 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                           ),
                         },
                       ],
-                      provisions: [{ label: "no provider lock-in", status: "included" }],
+                      provisions: [{ label: "no provider lock-in", status: "included" }                      ],
                     },
                   ]}
                 />
               </TabsContent>
-              <TabsContent value="lines-drawn" className="mt-0 space-y-3">
-                <div className="text-primary">03 / lines drawn</div>
-                <p>
-                  agentity is the entity and administration layer. banking, payment rails, wallets,
-                  cards, and other third-party services remain with their independent providers.
-                </p>
-                <p>
-                  you choose and control those provider relationships; agentity does not operate a
-                  bank, hold funds, or provide legal or tax advice.
-                </p>
-              </TabsContent>
               <TabsContent value="lifecycle" className="mt-0 space-y-3">
-                <div className="text-primary">04 / formation lifecycle</div>
+                <div className="text-primary">03 / formation lifecycle</div>
                 <p>
                   an illustrative sequence for the planned entity journey; these steps are not live
                   integrations or legal advice.
@@ -548,11 +434,10 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                   ]}
                 />
               </TabsContent>
-              <TabsContent value="connects" className="mt-0 space-y-2 leading-tight">
-                <div className="text-primary">05 / decoupled projects</div>
+              <TabsContent value="connects" className="mt-0 space-y-3">
+                <div className="text-primary">04 / decoupled projects</div>
                 <p>independent projects that tie into the same ecosystem.</p>
                 <DetailTable
-                  compact
                   rows={[
                     {
                       label: "communication stack",
@@ -597,10 +482,6 @@ export function AgentityExample({ open, onOpenChange }: AgentityExampleProps) {
                     },
                   ]}
                 />
-                <section className="space-y-2">
-                  <h3 className="text-primary">external providers</h3>
-                  <ExternalProvidersTable />
-                </section>
               </TabsContent>
             </div>
           </Tabs>
